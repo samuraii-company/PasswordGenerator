@@ -5,6 +5,7 @@ const index = () => {
     <>
       <Head>
         <title>Open Source Password Generator</title>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
       <MainComponents />
     </>
