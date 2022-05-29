@@ -9,9 +9,8 @@ const MainComponents = () => {
     const [num, setNum] = React.useState(false);
     const [sym, setSym] = React.useState(false);
     const [password, setPassword] = React.useState("");
-
     const sendRequest = async () => {
-        const apiUrl = `${process.env.HOST_URL}/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
+        const apiUrl = `${process.env.NEXT_PUBLIC_HOST_URL}/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
         await axios.get(apiUrl).then((resp) => {
             const newPassword = resp.data;
             setPassword(newPassword.password);
@@ -60,4 +59,5 @@ const MainComponents = () => {
     )
 }
 
-export default MainComponents
+
+export default MainComponents;
