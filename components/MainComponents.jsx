@@ -10,7 +10,7 @@ const MainComponents = () => {
     const [sym, setSym] = React.useState(false);
     const [password, setPassword] = React.useState("");
     const sendRequest = async () => {
-        const apiUrl = `http://62.109.30.143:9999/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
+        const apiUrl = `http://127.0.0.1:8000/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
         await axios.get(apiUrl).then((resp) => {
             const newPassword = resp.data;
             setPassword(newPassword.password);
