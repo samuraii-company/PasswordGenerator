@@ -3,15 +3,16 @@ import React from "react"
 import { AiFillGithub } from "react-icons/ai"
 import axios from "axios";
 
+
 const MainComponents = () => {
     const [value, setValue] = React.useState(20);
     const [num, setNum] = React.useState(false);
     const [sym, setSym] = React.useState(false);
     const [password, setPassword] = React.useState("");
 
-    const sendRequest = () => {
-        const apiUrl = `http://127.0.0.1:8000/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
-        axios.get(apiUrl).then((resp) => {
+    const sendRequest = async () => {
+        const apiUrl = `${process.env.HOST_URL}/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
+        await axios.get(apiUrl).then((resp) => {
             const newPassword = resp.data;
             setPassword(newPassword.password);
         });
