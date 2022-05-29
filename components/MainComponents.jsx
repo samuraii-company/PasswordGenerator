@@ -10,7 +10,7 @@ const MainComponents = () => {
     const [sym, setSym] = React.useState(false);
     const [password, setPassword] = React.useState("");
     const sendRequest = async () => {
-        const apiUrl = `http://127.0.0.1:8000/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
+        const apiUrl = `https://password-generate-api.herokuapp.com/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
         await axios.get(apiUrl).then((resp) => {
             const newPassword = resp.data;
             setPassword(newPassword.password);
