@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.router import router
-
 import uvicorn
 
 app = FastAPI(title="PasswordGeneratorAPI", version="0.1.0")
