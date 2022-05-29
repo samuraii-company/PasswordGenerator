@@ -4,6 +4,9 @@ import string
 import random
 
 
+SYMBOLS = "@!_[]:;*^%#"
+
+
 class PasswordCredentials(NamedTuple):
     symbols_count: int
     digits: bool
@@ -26,7 +29,7 @@ class PasswordGenerator(Generator):
         self.password = ""
 
     def generate(self) -> str:
-        """Generate only letters password"""
+        """Generate password"""
 
         for _ in range(self.symbols_count):
             self.password += random.choice(self.letters)
@@ -50,11 +53,19 @@ class NumbersPasswordGenerator(PasswordGenerator):
 
 
 class SymbolsPasswordGenerator(PasswordGenerator):
+    """Password Generator with letters, symbols"""
+
+    def __init__(self, symbols_count: int):
+        super().__init__(symbols_count)
+        self.letters = string.ascii_letters + SYMBOLS
+
+
+class FullComboPasswordGenerator(PasswordGenerator):
     """Password Generator with letters, numbers, symbols"""
 
     def __init__(self, symbols_count: int):
         super().__init__(symbols_count)
-        self.letters = string.ascii_letters + string.digits + "@![]/_-"
+        self.letters = string.ascii_letters + string.digits + SYMBOLS
 
 
 def create_password(credentials: PasswordCredentials) -> "Generator":
@@ -66,5 +77,8 @@ def create_password(credentials: PasswordCredentials) -> "Generator":
     elif credentials.digits and not credentials.symbols:
         return NumbersPasswordGenerator(credentials.symbols_count)
 
-    else:
+    elif not credentials.digits and credentials.symbols:
         return SymbolsPasswordGenerator(credentials.symbols_count)
+
+    else:
+        return FullComboPasswordGenerator(credentials.symbols_count)

@@ -9,7 +9,7 @@ from . import services
 
 router = APIRouter(tags=["Password"], prefix="/api/v1/password")
 
-MAX_SYMBOLS = 1000
+MAX_SYMBOLS = 101
 MIN_SYMBOLS = 20
 
 
@@ -24,7 +24,7 @@ def generate_password(
     if count > MAX_SYMBOLS:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Maximum password length 1000 symbols",
+            detail="Maximum password length 100 symbols",
         )
 
     credentials = PasswordCredentials(
