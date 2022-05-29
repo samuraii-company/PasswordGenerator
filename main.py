@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.router import router
+import uvicorn
 
 app = FastAPI(title="PasswordGeneratorAPI", version="0.1.0")
 
@@ -20,3 +21,7 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"message": "Welcome to PasswordGenerator API"}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app")
