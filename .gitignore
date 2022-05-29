@@ -30,3 +30,10 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+__pycache__/
+.pytest_cache/
+api/
+core/
+env/
+tests/

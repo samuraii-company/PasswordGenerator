@@ -1,6 +1,6 @@
 import styles from "../styles/MainComponent.module.scss"
 import React from "react"
-import {AiFillGithub} from "react-icons/ai"
+import { AiFillGithub } from "react-icons/ai"
 import axios from "axios";
 
 const MainComponents = () => {
@@ -12,11 +12,11 @@ const MainComponents = () => {
     const sendRequest = () => {
         const apiUrl = `http://127.0.0.1:8000/api/v1/password/?count=${value}&numbers=${num}&symbols=${sym}`;
         axios.get(apiUrl).then((resp) => {
-        const newPassword = resp.data;
-        setPassword(newPassword.password);
+            const newPassword = resp.data;
+            setPassword(newPassword.password);
         });
     }
-    React.useEffect(() =>{
+    React.useEffect(() => {
         sendRequest()
     }, [value, num, sym])
 
@@ -50,10 +50,10 @@ const MainComponents = () => {
                     </div>
                 </div>
                 <div className={styles.btn_wrap}>
-                    <button onClick = {() => sendRequest()}>Update Password</button>
-                    <button onClick={() => {navigator.clipboard.writeText(password)}}>Copy Password</button>
+                    <button onClick={() => sendRequest()}>Update Password</button>
+                    <button onClick={() => { navigator.clipboard.writeText(password) }}>Copy Password</button>
                 </div>
-                <a href=""><AiFillGithub /></a>
+                <a href="https://github.com/samuraii-company/PasswordGenerator"><AiFillGithub /></a>
             </div>
         </div>
     )
