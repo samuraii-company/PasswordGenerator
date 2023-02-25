@@ -1,8 +1,8 @@
 {
-    "builds": [
-      {"src": "/api/router.py", "use": "@now/python"}
-    ],
-    "routes": [
-      {"src": "/(.*)", "dest": "api/router.py"}
-    ]
-  }
+	"version": 2,
+	"public": false,
+	"builds": [{ "src": "api/router.py", "use": "@vercel/python" }],
+	"routes": [
+		{ "src": "/", "dest": "api/router.py" }
+	]
+}
