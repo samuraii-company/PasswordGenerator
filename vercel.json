@@ -1,7 +1,7 @@
 {
 	"version": 2,
 	"public": false,
-	"builds": [{ "src": "api/router.py", "use": "@vercel/python" }],
+	"builds": [{ "src": "main.py", "use": "@vercel/python" }],
 	"routes": [
 		{ "src": "/api/v1/password", "dest": "api/router.py" }
 	]
