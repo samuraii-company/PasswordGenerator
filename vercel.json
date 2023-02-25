@@ -1,0 +1,8 @@
+{
+    "builds": [
+      {"src": "/api/router.py", "use": "@now/python"}
+    ],
+    "routes": [
+      {"src": "/(.*)", "dest": "api/router.py"}
+    ]
+  }
